@@ -17,8 +17,7 @@ LayerNEXUS is a full-stack, AI-assisted data normalization and schema generation
 - 🧠 **AI-Powered Schema Fix**: Normalize flat files into 3NF schemas
 - 📊 **ER Diagram Preview**: Mermaid-based relational diagram generator
 - 📂 **Multi-File Upload**: Batch processing and table inference
-- 💾 **Multi-Dialect SQL Output**: PostgreSQL, MySQL, SQLite, MongoDB
-- 🔐 **PII Masking**: Email, phone, name masking using Presidio
+- 💾 **Multi-Dialect SQL Output**: PostgreSQL, MySQL, SQLite, Oracle, Microsoft SQL
 - 🐳 **Docker Deployment**: Full-stack Docker support with DB + frontend
 
 ---
@@ -54,10 +53,8 @@ layernexus/
 ├── frontend/          # React + Tailwind + ERD preview
 │   └── Dockerfile
 ├── docker-compose.yml
-├── .env.example       # Environment template
 ├── LICENSE            # MIT License
 ├── README.md          # You're here!
-└── docs/              # Screenshots, diagrams (optional)
 ```
 
 ---
@@ -74,15 +71,6 @@ layernexus/
 ## 📜 License
 
 This project is licensed under the **MIT License**. See [LICENSE](./LICENSE) for details.
-
----
-
-## 🤝 Contributing
-
-Pull requests welcome. Good first issues:
-- Add new dialect (BigQuery, Oracle)
-- Add row preview for CSVs
-- Improve join prediction accuracy
 
 ---
 
