@@ -1,0 +1,37 @@
+# Stage 1: Build + Compile Python
+FROM python:3.10-slim AS builder
+
+WORKDIR /app
+
+# Install required build tools
+RUN apt-get update && \
+    apt-get install -y patchelf build-essential gcc g++ && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+
+COPY backend/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install nuitka
+
+COPY backend/ ./backend
+
+# Compile your entry point + all imported files
+RUN nuitka \
+  --follow-imports \
+  --standalone \
+  --enable-plugin=pylint-warnings \
+  --include-package=passlib.handlers \
+  --output-dir=/compiled \
+  backend/main.py
+
+# Stage-2  runtime image
+FROM python:3.10-slim AS runtime
+WORKDIR /app
+
+COPY --from=builder /compiled/main.dist/ /app/
+
+COPY backend/.env ./backend/.env
+ENV PYTHONPATH=/app
+
+EXPOSE 8001
+CMD ["./main.bin"]

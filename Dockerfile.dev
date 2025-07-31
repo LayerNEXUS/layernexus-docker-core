@@ -1,0 +1,25 @@
+# Use minimal Python base image
+FROM python:3.10-slim
+
+LABEL maintainer="Max Kuan <founder@layernexus.com>"
+LABEL org.opencontainers.image.authors="Max Kuan"
+LABEL org.opencontainers.image.description="LayerNEXUS Backend Service"
+
+# Set working directory
+WORKDIR /app
+
+# Set Python path for absolute imports (e.g., import backend.lib...)
+ENV PYTHONPATH=/app
+
+# Copy requirements and install first for layer caching
+COPY backend/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy full backend source code
+COPY backend/ ./backend
+
+# Expose FastAPI port
+EXPOSE 8001
+
+# Start FastAPI app with .env support
+CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8001", "--env-file", "backend/.env"]

@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.pyo
+*.log
+*.sqlite3
+backend/.env.lock
+.vscode/
+.DS_Store
+Thumbs.db
+node_modules/
