@@ -26,7 +26,7 @@ LayerNEXUS is a full-stack, AI-assisted data normalization and schema generation
 
 ### 1. Clone
 ```bash
-[git clone https://github.com/yourusername/layernexus.git](https://github.com/LayerNEXUS/layernexus-docker-core)
+git clone https://github.com/LayerNEXUS/layernexus-docker-core
 cd layernexus-docker-core
 ```
 
