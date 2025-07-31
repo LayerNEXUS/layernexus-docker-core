@@ -57,17 +57,6 @@ layernexus/
 ├── README.md          # You're here!
 ```
 
----
-
-## 📸 Screenshots
-
-> Add images like:
-> - Upload flow
-> - AI schema review output
-> - ERD preview
-
----
-
 ## 📜 License
 
 This project is licensed under the **MIT License**. See [LICENSE](./LICENSE) for details.
